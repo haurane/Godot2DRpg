@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm0125hb16m0p"]
+
+[ext_resource type="Texture2D" uid="uid://bq02psdba4yuv" path="res://Characters_free/Amelia_idle_anim_16x16.png" id="1_1eads"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lra8e"]
+size = Vector2(14, 16)
+
+[node name="Node2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1eads")
+hframes = 24
+frame = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_lra8e")

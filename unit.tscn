@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ckg5fu5bcjtmj" path="res://Characters_free/Adam_run_16x16.png" id="2_7wnfe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1bru"]
-size = Vector2(16, 8)
+size = Vector2(14, 8)
 
 [sub_resource type="Animation" id="Animation_8gtd1"]
 length = 0.001
@@ -466,7 +466,7 @@ states/Run/position = Vector2(446, 139)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_f6nu5"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_a36sa"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_spaml")]
 graph_offset = Vector2(-102, -32)
 
-[node name="Unit" type="CharacterBody2D"]
+[node name="PlayerCharacter" type="CharacterBody2D"]
 position = Vector2(329, 231)
 script = ExtResource("1_hnthr")
 

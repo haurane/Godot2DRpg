@@ -1,0 +1,27 @@
+extends CanvasLayer
+
+@onready var _textbox_container = $TextboxContainer
+@onready var _start_symbol = $TextboxContainer/MarginContainer/HBoxContainer/Start
+@onready var _end_symbol  = $TextboxContainer/MarginContainer/HBoxContainer/End
+@onready var _label = $TextboxContainer/MarginContainer/HBoxContainer/Label
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+	
+func hide_textbox():
+	_start_symbol.text = ''
+	_end_symbol.text = ''
+	_label.text = ''
+	_textbox_container.hide()
+	
+func show_textbox():
+	_start_symbol.text = ''
+	_end_symbol.text = 'v'
+	_label.text = "Hello World"
+	_textbox_container.show()
+	
+func set_text(text : String):
+	_label.text = text
