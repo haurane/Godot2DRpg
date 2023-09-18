@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://6pm27i3pftao"]
+[gd_scene load_steps=8 format=3 uid="uid://6pm27i3pftao"]
 
 [ext_resource type="TileSet" uid="uid://bkxfsqbfnnw5n" path="res://Streets.tres" id="1_tq4w5"]
 [ext_resource type="Script" path="res://Main.gd" id="1_xlcl7"]
 [ext_resource type="PackedScene" uid="uid://bmvypqjuqxq28" path="res://unit.tscn" id="2_0g48j"]
 [ext_resource type="PackedScene" uid="uid://bxyo8i1j2ytr2" path="res://transition.tscn" id="3_pmxqk"]
+[ext_resource type="PackedScene" uid="uid://dbxc5x1o301vk" path="res://InvisibleWall.tscn" id="5_n0ct1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkeqk"]
 size = Vector2(20.6326, 18.3222)
@@ -36,17 +37,10 @@ z_index = 2
 collision_layer = 3
 collision_mask = 3
 
-[node name="Transition" parent="." instance=ExtResource("3_pmxqk")]
-position = Vector2(405, 343)
+[node name="Door1" parent="." instance=ExtResource("3_pmxqk")]
+position = Vector2(406, 344)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Limits"]]
-position = Vector2(-9, 9)
-scale = Vector2(1.2324, 42.6804)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" groups=["Limits"]]
-position = Vector2(0, 8.36449)
-scale = Vector2(0.707888, 1)
-shape = SubResource("RectangleShape2D_qkeqk")
+[node name="StaticBody2D" parent="." instance=ExtResource("5_n0ct1")]
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["Limits"]]
 position = Vector2(-9, 9)
@@ -69,3 +63,5 @@ position = Vector2(0, 757)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" groups=["Limits"]]
 position = Vector2(562.5, -13.5)
 shape = SubResource("RectangleShape2D_oq53a")
+
+[connection signal="body_entered" from="Door1" to="." method="_on_door_1_body_entered"]
