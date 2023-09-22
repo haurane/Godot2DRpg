@@ -1,0 +1,515 @@
+[gd_scene load_steps=10 format=3 uid="uid://dyghhaoqo1r7h"]
+
+[ext_resource type="Script" path="res://UI_Menu.gd" id="1_cdgnh"]
+[ext_resource type="Texture2D" uid="uid://c52nf1djdts0l" path="res://MenuIcons/Items.png" id="1_soa7x"]
+[ext_resource type="Texture2D" uid="uid://culdjfi02o4yp" path="res://MenuIcons/Quest.png" id="2_t2x0o"]
+[ext_resource type="Texture2D" uid="uid://bcquvdos46y4" path="res://MenuIcons/MainMenu.png" id="3_lmclx"]
+[ext_resource type="FontFile" uid="uid://dx6em4aoebwdo" path="res://data-control/data-latin.ttf" id="4_3hi3r"]
+[ext_resource type="Script" path="res://QuestContainer.gd" id="6_i2cka"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n058y"]
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnghf"]
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cn7r2"]
+bg_color = Color(1, 0.278431, 0.584314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[node name="UIMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_cdgnh")
+
+[node name="ButtonsContainer" type="MarginContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Buttons" type="HBoxContainer" parent="ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="InventoryButton" type="TextureButton" parent="ButtonsContainer/Buttons"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture_normal = ExtResource("1_soa7x")
+
+[node name="QuestButton" type="TextureButton" parent="ButtonsContainer/Buttons"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture_normal = ExtResource("2_t2x0o")
+
+[node name="MainMenuButton" type="TextureButton" parent="ButtonsContainer/Buttons"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture_normal = ExtResource("3_lmclx")
+
+[node name="MainMenuContainer" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MainMenuContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n058y")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MainMenuButtons" type="VBoxContainer" parent="MainMenuContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="MainMenuContainer/MarginContainer/MainMenuButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3hi3r")
+theme_override_font_sizes/font_size = 26
+text = "Continue"
+
+[node name="StartButton" type="Button" parent="MainMenuContainer/MarginContainer/MainMenuButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3hi3r")
+theme_override_font_sizes/font_size = 26
+action_mode = 0
+text = "Back to start"
+
+[node name="QuitButton" type="Button" parent="MainMenuContainer/MarginContainer/MainMenuButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3hi3r")
+theme_override_font_sizes/font_size = 26
+text = "Quit"
+
+[node name="QuestContainer" type="MarginContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(600, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_i2cka")
+
+[node name="Panel" type="Panel" parent="QuestContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fnghf")
+
+[node name="MarginContainer" type="MarginContainer" parent="QuestContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="QuestContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuestList" type="VBoxContainer" parent="QuestContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="VBoxContainer" parent="QuestContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="QuestGiver" type="HBoxContainer" parent="QuestContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="From" type="Label" parent="QuestContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/QuestGiver"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "From"
+
+[node name="Name" type="Label" parent="QuestContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/QuestGiver"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "quiquid"
+
+[node name="Target" type="HBoxContainer" parent="QuestContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="To" type="Label" parent="QuestContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Target"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "From"
+
+[node name="Name" type="Label" parent="QuestContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Target"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "quiquid"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="QuestContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+[node name="QuestContinueButton" type="Button" parent="QuestContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Close"
+
+[node name="InventoryContainer" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="InventoryContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fnghf")
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="InventoryContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 6
+
+[node name="Panel" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel2" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel3" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel4" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel5" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel6" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel7" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel8" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel9" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel10" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel11" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel12" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel13" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel14" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel15" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel16" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel17" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel18" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel19" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel20" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel21" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel22" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel23" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel24" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel25" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel26" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel27" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel28" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel29" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel30" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel31" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel32" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel33" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel34" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel35" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel36" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel37" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel38" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel39" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel40" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel41" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel42" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel43" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel44" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel45" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel46" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel47" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel48" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel49" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel50" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel51" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel52" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel53" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="Panel54" type="Panel" parent="InventoryContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cn7r2")
+
+[node name="CloseInventoryButton" type="Button" parent="InventoryContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="ButtonsContainer/Buttons/InventoryButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="ButtonsContainer/Buttons/QuestButton" to="." method="_on_quest_button_pressed"]
+[connection signal="pressed" from="ButtonsContainer/Buttons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MainMenuContainer/MarginContainer/MainMenuButtons/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MainMenuContainer/MarginContainer/MainMenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="QuestContainer/MarginContainer/VBoxContainer/QuestContinueButton" to="." method="_on_quest_continue_button_pressed"]
+[connection signal="pressed" from="InventoryContainer/MarginContainer/VBoxContainer/CloseInventoryButton" to="." method="_on_close_inventory_button_pressed"]
