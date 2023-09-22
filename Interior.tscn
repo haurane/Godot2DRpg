@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b26dijtm02g0h"]
+[gd_scene load_steps=13 format=3 uid="uid://b26dijtm02g0h"]
 
 [ext_resource type="Texture2D" uid="uid://dwuvkrsv4wwbv" path="res://Interiors_free/16x16/Interiors_free_16x16.png" id="1_hig8h"]
 [ext_resource type="Script" path="res://Interior.gd" id="1_rchdy"]
 [ext_resource type="Texture2D" uid="uid://cvyb4lq1di1jm" path="res://Interiors_free/16x16/Room_Builder_free_16x16.png" id="2_1gcoc"]
+[ext_resource type="PackedScene" uid="uid://dyghhaoqo1r7h" path="res://UI_Menu.tscn" id="2_o6e34"]
 [ext_resource type="PackedScene" uid="uid://bmvypqjuqxq28" path="res://unit.tscn" id="3_4nb40"]
 [ext_resource type="PackedScene" uid="uid://cm0125hb16m0p" path="res://npc.tscn" id="4_fgm7r"]
 [ext_resource type="PackedScene" uid="uid://cjp4t35c75cnd" path="res://textbox.tscn" id="5_r36rg"]
@@ -4128,6 +4129,8 @@ radius = 21.0238
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_rchdy")
+
+[node name="UIMenu" parent="." instance=ExtResource("2_o6e34")]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, 1)

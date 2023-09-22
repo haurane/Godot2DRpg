@@ -31,8 +31,8 @@ func _on_area_2d_body_entered(body):
 		$Textbox.queue_text("Thanks a lot")
 		
 		var first_quest = Quest.new("First Delivery", "Your very first delivery", 100, $QuestGiver, null)
-		print(first_quest)
+		#print(first_quest)
 		QuestManager.add_quest(first_quest)
 		
-		print(QuestManager.find_by_name("First Delivery").quest_name)
+		#print(QuestManager.find_by_name("First Delivery").quest_name)
 		

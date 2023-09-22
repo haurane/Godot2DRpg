@@ -18,6 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 QuestManager="*res://quest_manager.gd"
+Utilities="*res://utilities.gd"
+UiMenu="*res://UI_Menu.tscn"
+
+[dotnet]
+
+project/assembly_name="Delivery"
 
 [input]
 

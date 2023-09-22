@@ -60,7 +60,7 @@ func set_text():
 	tween.tween_property(_label, "visible_ratio", 1.0, CHARACTER_READ_RATE * len(new_text)).from(0.0).finished.connect(_finish_read)
 
 func _finish_read():
-	print("finished read")
+#	print("finished read")
 	tween.stop()
 	_label.visible_ratio = 1.0
 	_end_symbol.text = 'v'
@@ -70,8 +70,11 @@ func _change_state(nextState : State):
 	current_state = nextState
 	match current_state:
 		State.READY :
-			print("ready")
+#			print("ready")
+			pass
 		State.READ:
-			print("read")
+#			print("read")
+			pass
 		State.FINISHED:
-			print("finished")
+#			print("finished")
+			pass
