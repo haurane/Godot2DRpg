@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://bmvypqjuqxq28"]
 
-[ext_resource type="Script" path="res://unit.gd" id="1_hnthr"]
-[ext_resource type="Texture2D" uid="uid://jub5q8n00mq" path="res://Characters_free/Adam_idle_anim_16x16.png" id="2_1hkno"]
-[ext_resource type="Texture2D" uid="uid://ckg5fu5bcjtmj" path="res://Characters_free/Adam_run_16x16.png" id="2_7wnfe"]
+[ext_resource type="Script" path="res://Player.gd" id="1_i6rbg"]
+[ext_resource type="Texture2D" uid="uid://jub5q8n00mq" path="res://Characters_free/Adam_idle_anim_16x16.png" id="2_nwyvb"]
+[ext_resource type="Texture2D" uid="uid://ckg5fu5bcjtmj" path="res://Characters_free/Adam_run_16x16.png" id="3_ijrlf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1bru"]
 size = Vector2(14, 8)
@@ -466,12 +466,15 @@ states/Run/position = Vector2(446, 139)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_f6nu5"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_a36sa"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_spaml")]
 graph_offset = Vector2(-102, -32)
 
-[node name="PlayerCharacter" type="CharacterBody2D"]
-script = ExtResource("1_hnthr")
+[node name="PlayerCharacter" type="CharacterBody2D" groups=["PlayerCharacter"]]
+z_index = 2
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_i6rbg")
 
 [node name="Sprite_Idle" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_1hkno")
+texture = ExtResource("2_nwyvb")
 hframes = 24
 frame = 18
 region_rect = Rect2(48, 0, 16, 32)
@@ -490,7 +493,7 @@ libraries = {
 
 [node name="Sprite_Run" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_7wnfe")
+texture = ExtResource("3_ijrlf")
 hframes = 24
 
 [node name="Camera2D" type="Camera2D" parent="."]

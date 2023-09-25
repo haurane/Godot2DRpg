@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var _animation_tree = $AnimationTree
 @onready var _animation_state_machine = _animation_tree.get("parameters/playback")
 
+@onready var camera = $Camera2D
+
 enum direction_enum {UP, DOWN, LEFT, RIGHT}
 
 var direction
@@ -18,16 +20,6 @@ func _ready():
 	_update_animation(starting_direction)
 
 func _physics_process(delta):
-
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var x_direction = Input.get_axis("ui_left", "ui_right")
-	var y_direction = Input.get_axis("ui_up", "ui_down")
-	
-	velocity.x = x_direction * SPEED
-	velocity.y = y_direction * SPEED
-	_update_animation(Vector2(x_direction,y_direction))
 	_pick_state()
 	
 

@@ -16,6 +16,8 @@ var _cur_state : State
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	UiMenu.visible = false
+	Player.visible = false
 	_cur_state = State.START
 
 
@@ -29,8 +31,9 @@ func _process(delta):
 				_change_state(State.QUIT)
 			if Input.is_action_just_pressed("ui_accept"):
 				print("Start the game")
-				get_tree().root.add_child(_main_game)
-				get_node(".").free()
+				UiMenu.visible = true
+				Player.visible = true
+				SceneSwitcher.switch_scene("res://Main.tscn")
 				
 		State.QUIT:
 			if Input.is_action_just_pressed("ui_down"):

@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxyo8i1j2ytr2"]
+[gd_scene load_steps=3 format=3 uid="uid://bxyo8i1j2ytr2"]
+
+[ext_resource type="Script" path="res://transition.gd" id="1_sgwqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpnlx"]
 size = Vector2(21.875, 30)
@@ -8,7 +10,10 @@ z_index = 2
 scale = Vector2(0.64, 1)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("1_sgwqw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 2
 shape = SubResource("RectangleShape2D_rpnlx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

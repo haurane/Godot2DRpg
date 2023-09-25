@@ -14,24 +14,15 @@ func _ready():
 func _process(delta):
 	pass
 	
-#func _draw():
-#	print("draw")
-#	for l in _quest_list.get_children():
-#		_quest_list.remove_child(l)
-#		l.queue_free()
-#	if ! QuestManager.active_quests.is_empty():
-#		for quest in QuestManager.active_quests :
-#			var quest_title = Label.new()
-#			quest_title.text = quest.quest_name
-#			_quest_list.add_child(quest_title)
-#	else:
-#		var quest_title = Label.new()
-#		quest_title.text = "No Active Quests"
-#		_quest_list.add_child(quest_title)
-		
 func _add_quest(quest):
-	print("add quest to list")
-	print(quest)
-	var qlabel = Label.new()
-	qlabel.text = quest.quest_name
-	_quest_list.add_child(qlabel)
+	var qbutton = Button.new()
+	qbutton.text = quest.quest_name
+	qbutton.connect("pressed", _on_quest_button_pressed.bind(quest))
+	_quest_list.add_child(qbutton)
+	
+func _on_quest_button_pressed(quest):
+	print_debug(quest.quest_name)
+	$MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/QuestGiver/Name.text = quest.quest_giver
+	$MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Target/Name.text = quest.quest_target
+	$MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/QuestDescription.text = quest.quest_description
+

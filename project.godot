@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 QuestManager="*res://quest_manager.gd"
 Utilities="*res://utilities.gd"
 UiMenu="*res://UI_Menu.tscn"
+SceneSwitcher="*res://scene_switcher.gd"
+Player="*res://Player.tscn"
 
 [dotnet]
 
